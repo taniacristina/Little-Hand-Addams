@@ -1,8 +1,12 @@
 var altura = 480;
 var largura = 640;
+var pontos = 50;
 
 // Função que será executada quando a página for carregada 
 $(document).ready(function () {
+
+    // Manipulação da seção de pontos
+    $('#pontos').html(pontos);
 
     setInterval(renderScene, 2000);
     
@@ -77,33 +81,7 @@ function renderScene() {
     dirImg = Math.floor(Math.random() * 2 + 1);
 
     // Verificando se a imagem pertence ao grupo
-    if (dirImg == 1) {
-
-        // Mostrando a imagem
-        $("canvas").drawImage({
-            layer:true,
-            source: 'IMG/IMG'+ dirImg +'/img1.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
-            x: posicaoX,
-            y: posicaoY,
-            width: 40,
-            height: 40,
-            click: function(layer) {
-                $("canvas").drawRect({
-                    layer:true,
-                    fillStyle: linear, // Cor do fundo
-                    x: 320,
-                    y: 240,
-                    width: largura,
-                    height: altura,
-                    cornerRadius: 10, // Raio da borda
-                    strokeStyle: '#BEBEBE', // Cor da borda
-                    strokeWidth: 10, // Largura da borda
-                });
-                console.log("soma pontos");
-            }
-        });
-
-    } else { // Caso a imagem não pertença
+    if (dirImg == 2) {
 
         // Mostrando a imagem
         $("canvas").drawImage({
@@ -125,7 +103,49 @@ function renderScene() {
                     strokeStyle: '#BEBEBE', // Cor da borda
                     strokeWidth: 10, // Largura da borda
                 });
-                console.log("diminui pontos");
+
+                // Somando pontos
+                pontos+=10;
+                $('#pontos').html(pontos);
+
+                if( pontos >= 100){
+                    alert("Você ganhou!");
+                }
+
+            }
+        });
+
+    } else { // Caso a imagem não pertença
+
+        // Mostrando a imagem
+        $("canvas").drawImage({
+            layer:true,
+            source: 'IMG/IMG'+ dirImg +'/img1.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
+            x: posicaoX,
+            y: posicaoY,
+            width: 40,
+            height: 40,
+            click: function(layer) {
+                $("canvas").drawRect({
+                    layer:true,
+                    fillStyle: linear, // Cor do fundo
+                    x: 320,
+                    y: 240,
+                    width: largura,
+                    height: altura,
+                    cornerRadius: 10, // Raio da borda
+                    strokeStyle: '#BEBEBE', // Cor da borda
+                    strokeWidth: 10, // Largura da borda
+                });
+
+                // Subtraindo pontos
+                pontos-=10;
+                $('#pontos').html(pontos);
+
+                // Se pontuação chegar a zero informa que o jogador perdeu
+                if(pontos <= 0) {
+                    alert("Você perdeu!");
+                }
             }
         });
 
