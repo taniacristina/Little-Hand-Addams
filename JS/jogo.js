@@ -29,9 +29,12 @@ $(document).ready(function () {
 
 });
 
+
 // Função para mostrar as imagens que a mão terá que pegar
 // Essa função será executada a cada 1 segundo
+
 function renderScene() {
+
     // Limpando o canvas para que as imagens não fiquem sobrepostas
     $("canvas").clearCanvas(); 
 
@@ -68,15 +71,63 @@ function renderScene() {
         posicaoY = 40;
     }
 
-    console.log("PosicaoX = " + posicaoX);
-    console.log("PosicaoY = " + posicaoY);
+    // Achando diretório da imagem
+    dirImg = Math.floor(Math.random() * 2 + 1);
 
-    // Mostrando a imagem
-    $("canvas").drawImage({
-		source: 'IMG/img' + Math.floor(Math.random() * 2 + 1) + '.jpg', // Lógica para mostrar diferentes imagens
-		x: posicaoX,
-        y: posicaoY,
-        width: 40,
-        height: 40
-	});
+    // Verificando se a imagem pertence ao grupo
+    if (dirImg == 1) {
+
+        // Mostrando a imagem
+        $("canvas").drawImage({
+            layer:true,
+            source: 'IMG/img1.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
+            x: posicaoX,
+            y: posicaoY,
+            width: 40,
+            height: 40,
+            click: function(layer) {
+                $("canvas").drawRect({
+                    fillStyle: linear, // Cor do fundo
+                    x: 320,
+                    y: 240,
+                    width: largura,
+                    height: altura,
+                    cornerRadius: 10, // Raio da borda
+                    strokeStyle: '#BEBEBE', // Cor da borda
+                    strokeWidth: 10, // Largura da borda
+                });
+            
+                console.log("soma pontos");
+            }
+        });
+
+    } else { // Caso a imagem não pertença
+
+        // Mostrando a imagem
+        $("canvas").drawImage({
+            layer:true,
+            source: 'IMG/img2.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
+            x: posicaoX,
+            y: posicaoY,
+            width: 40,
+            height: 40,
+            click: function(layer) {
+                $("canvas").drawRect({
+                    fillStyle: linear, // Cor do fundo
+                    x: 320,
+                    y: 240,
+                    width: largura,
+                    height: altura,
+                    cornerRadius: 10, // Raio da borda
+                    strokeStyle: '#BEBEBE', // Cor da borda
+                    strokeWidth: 10, // Largura da borda
+                });
+                
+                console.log("diminui pontos");
+            
+            }
+        });
+
+    }
+
 }
