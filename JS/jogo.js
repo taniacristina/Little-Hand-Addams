@@ -17,6 +17,7 @@ $(document).ready(function () {
 
     // Desenhando plano de fundo
     $("canvas").drawRect({
+        layer:true,
 		fillStyle: linear, // Cor do fundo
 		x: 320,
 		y: 240,
@@ -49,6 +50,7 @@ function renderScene() {
 
     // Desenhando plano de fundo
     $("canvas").drawRect({
+        layer:true,
         fillStyle: linear, // Cor do fundo
         x: 320,
         y: 240,
@@ -80,13 +82,14 @@ function renderScene() {
         // Mostrando a imagem
         $("canvas").drawImage({
             layer:true,
-            source: 'IMG/img1.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
+            source: 'IMG/IMG'+ dirImg +'/img1.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
             x: posicaoX,
             y: posicaoY,
             width: 40,
             height: 40,
             click: function(layer) {
                 $("canvas").drawRect({
+                    layer:true,
                     fillStyle: linear, // Cor do fundo
                     x: 320,
                     y: 240,
@@ -96,7 +99,6 @@ function renderScene() {
                     strokeStyle: '#BEBEBE', // Cor da borda
                     strokeWidth: 10, // Largura da borda
                 });
-            
                 console.log("soma pontos");
             }
         });
@@ -106,13 +108,14 @@ function renderScene() {
         // Mostrando a imagem
         $("canvas").drawImage({
             layer:true,
-            source: 'IMG/img2.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
+            source: 'IMG/IMG'+ dirImg +'/img2.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
             x: posicaoX,
             y: posicaoY,
             width: 40,
             height: 40,
             click: function(layer) {
                 $("canvas").drawRect({
+                    layer:true,
                     fillStyle: linear, // Cor do fundo
                     x: 320,
                     y: 240,
@@ -122,9 +125,7 @@ function renderScene() {
                     strokeStyle: '#BEBEBE', // Cor da borda
                     strokeWidth: 10, // Largura da borda
                 });
-                
                 console.log("diminui pontos");
-            
             }
         });
 
