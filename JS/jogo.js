@@ -1,6 +1,13 @@
 var altura = 480;
 var largura = 640;
 var pontos = 50;
+var aceleracao = 3000;
+
+// Função para executar a função de mostrar a imagem
+// Esse função foi criada para permitir que o tempo de renderização das imagens fosse acelerado
+function timeout(){
+    setTimeout(renderScene, aceleracao);
+}
 
 // Função que será executada quando a página for carregada 
 $(document).ready(function () {
@@ -8,7 +15,8 @@ $(document).ready(function () {
     // Manipulação da seção de pontos
     $('#pontos').html(pontos);
 
-    setInterval(renderScene, 2000);
+    // Chamando função para renderizar as imagens
+    timeout();
     
     // Criando gradiente de cor
     var linear = $('canvas').createGradient({
@@ -108,6 +116,12 @@ function renderScene() {
                 pontos+=10;
                 $('#pontos').html(pontos);
 
+                // Aumentando a aceleração
+                if (aceleracao > 1000) {
+                    aceleracao -= 1000;
+                }
+
+                // Verificando se a pontuação é maior que 100 para indicar que o jogador ganhou
                 if( pontos >= 100){
                     alert("Você ganhou!");
                 }
@@ -150,5 +164,8 @@ function renderScene() {
         });
 
     }
+
+    // Função para rendericar as imagens
+    timeout();
 
 }
