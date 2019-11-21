@@ -3,6 +3,12 @@ var largura = 640;
 var pontos = 50;
 var aceleracao = 3000;
 
+// Criando objeto para audio de clique na imagem certa
+var audioCerto = new Audio('AUDIO/acertou.mp3');
+
+// Criando objeto para audio de clique na imagem errada
+var audioErrado = new Audio('AUDIO/errou.mp3');
+
 // Função para executar a função de mostrar a imagem
 // Esse função foi criada para permitir que o tempo de renderização das imagens fosse acelerado
 function timeout(){
@@ -112,6 +118,9 @@ function renderScene() {
                     strokeWidth: 10, // Largura da borda
                 });
 
+                // Tocando audio de sucesso
+                audioCerto.play().catch(function() {});
+
                 // Somando pontos
                 pontos+=10;
                 $('#pontos').html(pontos);
@@ -151,6 +160,9 @@ function renderScene() {
                     strokeStyle: '#BEBEBE', // Cor da borda
                     strokeWidth: 10, // Largura da borda
                 });
+
+                // Tocando audio de erro
+                audioErrado.play().catch(function() {});
 
                 // Subtraindo pontos
                 pontos-=10;
