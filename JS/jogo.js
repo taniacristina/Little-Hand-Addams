@@ -3,6 +3,9 @@ var largura = 640;
 var pontos = 0;
 var aceleracao = 3000;
 
+// Criando objeto para audio da familia addams
+var audioAddams = new Audio('AUDIO/music.mp3');
+
 // Criando objeto para audio de clique na imagem certa
 var audioCerto = new Audio('AUDIO/acertou.mp3');
 
@@ -13,10 +16,19 @@ var audioErrado = new Audio('AUDIO/errou.mp3');
 // Esse função foi criada para permitir que o tempo de renderização das imagens fosse acelerado
 function timeout(){
     setTimeout(renderScene, aceleracao);
+
+    if(audioAddams.paused) {
+        // Tocando musica da familia addams caso o audio tenha parado
+        audioAddams.play().catch(function() {});
+    } 
+    
 }
 
 // Função que será executada quando a página for carregada 
 $(document).ready(function () {
+
+    // Tocando musica da familia addams
+    audioAddams.play().catch(function() {});
 
     // Tornando pontos -10 e +10 invisiveis
     $('#mais-pontos').hide();
