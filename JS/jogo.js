@@ -1,6 +1,6 @@
 var altura = 480;
 var largura = 640;
-var pontos = 50;
+var pontos = 0;
 var aceleracao = 3000;
 
 // Criando objeto para audio de clique na imagem certa
@@ -18,8 +18,12 @@ function timeout(){
 // Função que será executada quando a página for carregada 
 $(document).ready(function () {
 
+    // Tornando pontos -10 e +10 invisiveis
+    $('#mais-pontos').hide();
+    $('#menos-pontos').hide();
+
     // Manipulação da seção de pontos
-    $('#pontos').html(pontos);
+    $('#contagem-pontos').html(pontos);
 
     // Chamando função para renderizar as imagens
     timeout();
@@ -121,18 +125,23 @@ function renderScene() {
                 // Tocando audio de sucesso
                 audioCerto.play().catch(function() {});
 
+                // Mostrando somatório de pontos
+                $('#mais-pontos').fadeIn('slow');
+                $('#mais-pontos').fadeOut('slow');
+
                 // Somando pontos
                 pontos+=10;
-                $('#pontos').html(pontos);
+                $('#contagem-pontos').html(pontos);
 
                 // Aumentando a aceleração
                 if (aceleracao > 1000) {
-                    aceleracao -= 1000;
+                    aceleracao -= 500;
                 }
 
                 // Verificando se a pontuação é maior que 100 para indicar que o jogador ganhou
                 if( pontos >= 100){
                     alert("Você ganhou!");
+                    window.location.href = 'ganhou.html';
                 }
 
             }
@@ -164,13 +173,18 @@ function renderScene() {
                 // Tocando audio de erro
                 audioErrado.play().catch(function() {});
 
+                // Mostrando subtração dos pontos
+                $('#menos-pontos').fadeIn('slow');
+                $('#menos-pontos').fadeOut('slow');
+
                 // Subtraindo pontos
                 pontos-=10;
-                $('#pontos').html(pontos);
+                $('#contagem-pontos').html(pontos);
 
                 // Se pontuação chegar a zero informa que o jogador perdeu
-                if(pontos <= 0) {
+                if(pontos < 0) {
                     alert("Você perdeu!");
+                    window.location.href = 'perdeu.html';
                 }
             }
         });

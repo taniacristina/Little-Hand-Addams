@@ -1,4 +1,61 @@
+/* Estilo do index */
+body {
+    background-image: url('IMG/addams.jpg');
+}
+
+canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#pontos {
+    color: red;
+    font-weight: bold;
+    font-size: 25px;
+    position: absolute;
+    left: 15%;
+}
+
+#contagem-pontos {
+    color:red;
+    font-weight: bold;
+    font-size: 25px; 
+    text-align: center;
+    position: absolute;
+    left: 15%;
+    top: 10%;
+}
+
 #secao-pontos {
     float: right;
     margin-right: 40%;
+}
+
+#menos-pontos {
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#mais-pontos {
+    color: #006400;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* Estilo do ganhou e perdeu */
+.mensagem {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 25%;
+    font-weight: bold;
+}
+
+#reiniciar {
+    display: block;
+    margin-top: 0;
+    text-decoration: none;
 }
