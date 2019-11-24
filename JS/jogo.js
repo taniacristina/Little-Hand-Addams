@@ -21,7 +21,7 @@ function timeout(){
         // Tocando musica da familia addams caso o audio tenha parado
         audioAddams.play().catch(function() {});
     } 
-    
+
 }
 
 // Função que será executada quando a página for carregada 
@@ -66,7 +66,6 @@ $(document).ready(function () {
 
 
 // Função para mostrar as imagens que a mão terá que pegar
-// Essa função será executada a cada 1 segundo
 
 function renderScene() {
 
@@ -95,16 +94,16 @@ function renderScene() {
         strokeWidth: 10, // Largura da borda
     });
 
-    var posicaoX = Math.floor(Math.random()*largura) - 30; // posição x randomica
-    var posicaoY = Math.floor(Math.random()*altura) - 30; // posição y randomica
+    var posicaoX = Math.floor(Math.random()*largura) - 60; // posição x randomica
+    var posicaoY = Math.floor(Math.random()*altura) - 60; // posição y randomica
     
     // Controle para que as imagens não sejam renderizadas fora da tela
-    if(posicaoX < 40) {
-        posicaoX = 40;
+    if(posicaoX < 70) {
+        posicaoX = 70;
     }
 
-    if(posicaoY < 40) {
-        posicaoY = 40;
+    if(posicaoY < 70) {
+        posicaoY = 70;
     }
 
     // Achando diretório da imagem
@@ -116,11 +115,11 @@ function renderScene() {
         // Mostrando a imagem
         $("canvas").drawImage({
             layer:true,
-            source: 'IMG/IMG'+ dirImg +'/img2.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
+            source: 'IMG/IMG'+ dirImg +'/img' + Math.floor(Math.random() * 4 + 1) + '.png', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
             x: posicaoX,
             y: posicaoY,
-            width: 40,
-            height: 40,
+            width: 70,
+            height: 70,
             click: function(layer) {
                 $("canvas").drawRect({
                     layer:true,
@@ -164,11 +163,11 @@ function renderScene() {
         // Mostrando a imagem
         $("canvas").drawImage({
             layer:true,
-            source: 'IMG/IMG'+ dirImg +'/img1.jpg', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
+            source: 'IMG/IMG'+ dirImg +'/img' + Math.floor(Math.random() * 4 + 1) + '.png', // Lógica para mostrar diferentes imagens, mostrando 10 imagens ao total
             x: posicaoX,
             y: posicaoY,
-            width: 40,
-            height: 40,
+            width: 70,
+            height: 70,
             click: function(layer) {
                 $("canvas").drawRect({
                     layer:true,
