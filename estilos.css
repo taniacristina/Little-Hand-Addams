@@ -42,12 +42,16 @@ canvas {
     color: red;
     font-weight: bold;
     font-size: 30px;
+    position: absolute;
+    top: 12%;
 }
 
 #mais-pontos {
     color: #006400;
     font-weight: bold;
     font-size: 30px;
+    position: absolute;
+    top: 12%;
 }
 
 /* Estilo do ganhou e perdeu */
@@ -55,7 +59,7 @@ canvas {
     color: red;
     font-size: 30px;
     text-align: center;
-    margin-top: 25%;
+    margin-top: 15%;
     font-weight: bold;
 }
 
