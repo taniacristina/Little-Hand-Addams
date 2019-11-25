@@ -3,6 +3,15 @@ body {
     background-image: url('IMG/addams-bg.jpg');
 }
 
+/* Estilos gerais */
+html {
+    cursor: url(IMG/mao-aberta.png) 30 30, auto;
+}
+
+html:active {
+    cursor: url(IMG/mao-fechada.png) 30 30, auto;
+}
+
 canvas {
     position: absolute;
     top: 50%;

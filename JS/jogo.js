@@ -133,6 +133,9 @@ function renderScene() {
                     strokeWidth: 10, // Largura da borda
                 });
 
+                // Trocando a imagem do ponteiro para a mão fechada
+                $('html').css('cursor','url(IMG/mao-fechada.png) 30 30, auto;');
+
                 // Tocando audio de sucesso
                 audioCerto.play().catch(function() {});
 
@@ -180,6 +183,9 @@ function renderScene() {
                     strokeStyle: '#BEBEBE', // Cor da borda
                     strokeWidth: 10, // Largura da borda
                 });
+
+                // Trocando a imagem do ponteiro para a mão fechada
+                $('html').css('cursor','url(IMG/mao-fechada.png) 30 30, auto;');
 
                 // Tocando audio de erro
                 audioErrado.play().catch(function() {});
